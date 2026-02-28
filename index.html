@@ -12,7 +12,7 @@ body{
 }
 
 #chatBox{
-  width:700px;
+  width:900px;
   height:250px;
   border:2px solid #333;
   background:white;
@@ -107,6 +107,11 @@ function reply(){
   // 小文字化して判定安定化
   const t = text;
 
+  // 桂泉会
+  if(t.includes("桂泉会") || t.includes("理念")){
+    response = "私たちは、地域に開かれた、地域に愛される、地域に信頼される施設を目指します";
+  }
+
   // 事業者
   if(t.includes("事業者") || t.includes("法人")){
     response = "事業者は社会福祉法人 桂泉会です。所在地は岩手県二戸市金田一字上田面301番地1、電話番号は0195-34-3100です。";
@@ -119,9 +124,14 @@ function reply(){
 
   // 所在地
   else if(t.includes("場所") || t.includes("所在地") || t.includes("どこ")){
-    response = "所在地は岩手県二戸市金田一字八ッ長40-1です。";
+    response = "所在地は岩手県二戸市金田一字八ッ長40番地1です。";
   }
 
+  // 職員
+  else if(t.includes("職員") || t.includes("スタッフ")){
+    response = "職員は管理者1名、サービス管理責任者1名、生活支援員1名、世話人3名です。";
+  } 
+  
   // 定員
   else if(t.includes("定員") || t.includes("何人")){
     response = "定員は20名で、1号棟10名・2号棟10名となっています。";
@@ -152,14 +162,37 @@ function reply(){
     response = "入浴時間は16:00～21:00となっています。";
   }
 
-  // 料金
-  else if(t.includes("料金") || t.includes("費用") || t.includes("いくら") || t.includes("利用料")){
-    response = "月額の目安は、食材料費20,000円、水道光熱費12,000円、家賃25,000円（助成あり）、消耗品費3,000円です。";
-  }
+　// 利用条件
+　else if(
+  　t.includes("利用条件") ||
+  　t.includes("入居条件") ||
+  　t.includes("対象") ||
+ 　 t.includes("利用できる人") ||
+ 　 t.includes("入れる人")
+　){
+　  response = "当ホームの利用対象は、障害支援区分の認定を受けている方で、共同生活が可能な方となります。詳細は個別にご相談ください。";
+　}
 
-  // 家賃
-  else if(t.includes("家賃")){
-    response = "家賃は月25,000円ですが、家賃助成により実質10,000円が控除されます。";
+   // 利用方法
+else if(
+  t.includes("利用方法") ||
+  t.includes("申し込み") ||
+  t.includes("申込") ||
+  t.includes("手続き") ||
+  t.includes("どうやって利用") ||
+  t.includes("利用するには") ||
+  t.includes("どんな人") ||
+  t.includes("どのような人") ||
+  t.includes("対象者") ||
+  t.includes("利用できる人") ||
+  t.includes("入れる人")
+){
+  response = "身体障がい・知的障がい・精神障がいのある方で、日常生活においてある程度身の回りのことができ、共同生活が可能な方が対象となります。また、グループホームの利用には、市町村が発行する『障害福祉サービス受給者証』が必要です。まずはお住まいの市町村窓口へご相談いただき、受給者証の申請手続きを行ってください。その後、見学・面談を経て利用開始となります。";
+}
+  
+  // 料金
+  else if(t.includes("料金") ||(t.includes("家賃")|| t.includes("費用") || t.includes("いくら") || t.includes("利用料")){
+    response = "月額の目安は、食材料費20,000円、水道光熱費12,000円、家賃25,000円、消耗品費3,000円です。10,000円の家賃助成があり、実質月額は50,000円となります。";
   }
 
   // 支払い
@@ -169,7 +202,7 @@ function reply(){
 
   // 苦情
   else if(t.includes("苦情") || t.includes("相談")){
-    response = "苦情やご相談は月～金曜日の9:00～17:00に受付しています。担当はサービス管理責任者 蒲生智明です。";
+    response = "苦情やご相談は月～金曜日の9:00～17:00に受付しています。担当はサービス管理責任者です。";
   }
 
   // 緊急
@@ -186,7 +219,22 @@ function reply(){
   else if(t.includes("防災") || t.includes("災害") || t.includes("避難")){
     response = "防災計画を策定し、昼夜を想定した避難訓練を実施しています。スプリンクラー等の設備も整備されています。";
   }
-
+　// 施設・設備について
+else if(
+  t.includes("どんな施設") ||
+  t.includes("どのような施設") ||
+  t.includes("設備") ||
+  t.includes("バリアフリー") ||
+  t.includes("車いす") ||
+  t.includes("wifi") ||
+  t.includes("Wi-Fi") ||
+  t.includes("インターネット") ||
+  t.includes("居室") ||
+  t.includes("個室") ||
+  t.includes("共用")
+){
+  response = "当ホームはバリアフリー対応で、車いすでの利用も可能です。居室はすべて個室で、各居室に冷暖房を完備しています。Wi-Fi（無線インターネット環境）も整備しています。共用スペースには食堂・浴室・洗濯室があり、各棟に洗濯機2台・乾燥機2台を設置しています。また、各居室および共用スペースにはスプリンクラーを完備し、防災面にも配慮しています。";
+}
   // 該当なし
   else{
     response = "申し訳ありません。その内容については職員までお問い合わせください。";
