@@ -102,13 +102,13 @@ function reply(){
 
   addMessage(text,"user");
 
-  let response = "Fuck you";
+  let response = "もう一度お願いします";
 
   if(text.includes("面会")){
-    response = "面会は10時〜17時だよ。";
+    response = "面会は6時〜21時です。";
   }
-  if(text.includes("料金")){
-    response = "料金は受付に聞いてね。";
+  if(text.includes("料金"　"利用料")){
+    response = "料金は上覧をご確認ください。";
   }
 
   addMessage(response,"bot");
