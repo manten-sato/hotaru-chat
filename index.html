@@ -3,40 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <title>まんてんちゃんChat</title>
+
 <style>
-body { font-family: sans-serif; }
-#chat { height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; }
-input { width: 80%; }
+body{
+  font-family: sans-serif;
+  background:#eef2f5;
+}
+
+#chatBox{
+  width: 700px;
+  height: 250px;
+  border: 2px solid #333;
+  background:white;
+  padding:10px;
+  overflow-y:auto;
+  margin-bottom:10px;
+}
+
+.message{
+  display:flex;
+  align-items:flex-start;
+  margin-bottom:12px;
+}
+
+.icon{
+  width:60px;
+  margin-right:10px;
+}
+
+.icon img{
+  width:60px;
+}
+
+.text{
+  background:#f4f4f4;
+  padding:10px;
+  border-radius:8px;
+  max-width:550px;
+}
+
+.user .text{
+  background:#d7ecff;
+}
+
+input{
+  width:550px;
+  padding:6px;
+}
 </style>
 </head>
+
 <body>
 
-<h2>まんてんちゃんとお話しよう</h2>
+<h2>まんてんちゃんとお話ししよう</h2>
 
-<div id="chat"></div>
+<div id="chatBox"></div>
 
 <input type="text" id="userInput" placeholder="メッセージを入力">
 <button onclick="reply()">送信</button>
 
 <script>
-function reply() {
-    let input = document.getElementById("userInput").value;
-    let chat = document.getElementById("chat");
+function addMessage(text, sender){
 
-    chat.innerHTML += "<p><b>あなた:</b> " + input + "</p>";
+  const chat = document.getElementById("chatBox");
 
-    let response = "うーん、よくわからないよ！";
+  const messageDiv = document.createElement("div");
+  messageDiv.className = "message " + sender;
 
-    if (input.includes("面会")) {
-        response = "面会時間は10時〜17時だよ♪";
-    }
-    if (input.includes("料金")) {
-        response = "料金については受付に聞いてね！";
-    }
+  const iconDiv = document.createElement("div");
+  iconDiv.className = "icon";
 
-    chat.innerHTML += "<p><b>まんてんちゃん:</b> " + response + "</p>";
+  const img = document.createElement("img");
 
-    document.getElementById("userInput").value = "";
+  if(sender === "bot"){
+    img.src = "まんてんちゃん3.png";  // ← 同じフォルダに画像を置く
+  }else{
+    img.src = "https://cdn-icons-png.flaticon.com/512/1946/1946429.png";
+  }
+
+  iconDiv.appendChild(img);
+
+  const textDiv = document.createElement("div");
+  textDiv.className = "text";
+  textDiv.innerText = text;
+
+  messageDiv.appendChild(iconDiv);
+  messageDiv.appendChild(textDiv);
+
+  chat.appendChild(messageDiv);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function reply(){
+
+  const input = document.getElementById("userInput");
+  const text = input.value.trim();
+  if(!text) return;
+
+  addMessage(text,"user");
+
+  let response = "うーん、よくわからないよ！";
+
+  if(text.includes("面会")){
+    response = "面会は10時〜17時だよ。";
+  }
+  if(text.includes("料金")){
+    response = "料金は受付に聞いてね。";
+  }
+
+  addMessage(response,"bot");
+
+  input.value="";
 }
 </script>
 
