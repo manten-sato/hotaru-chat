@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>まんてんちゃんChat</title>
+<title>まんてんちゃんQ&A</title>
 
 <style>
 body{
@@ -11,9 +12,9 @@ body{
 }
 
 #chatBox{
-  width: 700px;
-  height: 250px;
-  border: 2px solid #333;
+  width:700px;
+  height:250px;
+  border:2px solid #333;
   background:white;
   padding:10px;
   overflow-y:auto;
@@ -55,7 +56,7 @@ input{
 
 <body>
 
-<h2>まんてんちゃんとお話ししよう</h2>
+<h2>まんてんちゃんQ&A</h2>
 
 <div id="chatBox"></div>
 
@@ -76,7 +77,7 @@ function addMessage(text, sender){
   const img = document.createElement("img");
 
   if(sender === "bot"){
-    img.src = "アイコン.png";  // ← 同じフォルダに画像を置く
+    img.src = "アイコン.png";
   }else{
     img.src = "https://cdn-icons-png.flaticon.com/512/1946/1946429.png";
   }
@@ -95,25 +96,100 @@ function addMessage(text, sender){
 }
 
 function reply(){
-
-  const input = document.getElementById("userInput");
+ const input = document.getElementById("userInput");
   const text = input.value.trim();
   if(!text) return;
 
   addMessage(text,"user");
 
-  let response = "もう一度お願いします";
+  let response = "";
 
-  if(text.includes("面会")){
-    response = "面会は6時〜21時です。";
+  // 小文字化して判定安定化
+  const t = text;
+
+  // 事業者
+  if(t.includes("事業者") || t.includes("法人")){
+    response = "事業者は社会福祉法人 桂泉会です。所在地は岩手県二戸市金田一字上田面301番地1、電話番号は0195-34-3100です。";
   }
-  if(text.includes("料金"　"利用料")){
-    response = "料金は上覧をご確認ください。";
+
+  // 代表者
+  else if(t.includes("代表") || t.includes("理事長")){
+    response = "代表者は理事長 佐藤義輝です。";
   }
 
-  addMessage(response,"bot");
+  // 所在地
+  else if(t.includes("場所") || t.includes("所在地") || t.includes("どこ")){
+    response = "所在地は岩手県二戸市金田一字八ッ長40-1です。";
+  }
 
-  input.value="";
+  // 定員
+  else if(t.includes("定員") || t.includes("何人")){
+    response = "定員は20名で、1号棟10名・2号棟10名となっています。";
+  }
+
+  // 開設
+  else if(t.includes("開設") || t.includes("いつから")){
+    response = "開設は平成22年4月1日です。";
+  }
+
+  // 面会
+  else if(t.includes("面会")){
+    response = "面会時間は原則9:00～20:00です。面会簿へのご記入をお願いしています。";
+  }
+
+  // 門限
+  else if(t.includes("門限") || t.includes("外出")){
+    response = "外出・外泊は事前の届出制で、門限は21:00です。";
+  }
+
+  // 食事
+  else if(t.includes("食事") || t.includes("ごはん")){
+    response = "食事は1日2食で、朝食は7:00～8:00、夕食は18:00～19:00です。";
+  }
+
+  // 入浴
+  else if(t.includes("風呂") || t.includes("入浴")){
+    response = "入浴時間は16:00～21:00となっています。";
+  }
+
+  // 料金
+  else if(t.includes("料金") || t.includes("費用") || t.includes("いくら") || t.includes("利用料")){
+    response = "月額の目安は、食材料費20,000円、水道光熱費12,000円、家賃25,000円（助成あり）、消耗品費3,000円です。";
+  }
+
+  // 家賃
+  else if(t.includes("家賃")){
+    response = "家賃は月25,000円ですが、家賃助成により実質10,000円が控除されます。";
+  }
+
+  // 支払い
+  else if(t.includes("支払い") || t.includes("払")){
+    response = "お支払いは現金・振込・自動引落しが可能で、翌々月1日までにお願いしています。";
+  }
+
+  // 苦情
+  else if(t.includes("苦情") || t.includes("相談")){
+    response = "苦情やご相談は月～金曜日の9:00～17:00に受付しています。担当はサービス管理責任者 蒲生智明です。";
+  }
+
+  // 緊急
+  else if(t.includes("緊急") || t.includes("事故") || t.includes("病気")){
+    response = "緊急時には速やかに医療機関へ連絡し、ご家族へもご報告いたします。";
+  }
+
+  // 個人情報
+  else if(t.includes("個人情報")){
+    response = "個人情報はサービス提供に必要な範囲で適切に管理し、正当な理由なく第三者へ開示することはありません。";
+  }
+
+  // 防災
+  else if(t.includes("防災") || t.includes("災害") || t.includes("避難")){
+    response = "防災計画を策定し、昼夜を想定した避難訓練を実施しています。スプリンクラー等の設備も整備されています。";
+  }
+
+  // 該当なし
+  else{
+    response = "申し訳ありません。その内容については職員までお問い合わせください。";
 }
 </script>
 
