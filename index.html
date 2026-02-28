@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>まんてんちゃんChat</title>
+<style>
+body { font-family: sans-serif; }
+#chat { height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; }
+input { width: 80%; }
+</style>
+</head>
+<body>
+
+<h2>まんてんちゃんとお話しよう</h2>
+
+<div id="chat"></div>
+
+<input type="text" id="userInput" placeholder="メッセージを入力">
+<button onclick="reply()">送信</button>
+
+<script>
+function reply() {
+    let input = document.getElementById("userInput").value;
+    let chat = document.getElementById("chat");
+
+    chat.innerHTML += "<p><b>あなた:</b> " + input + "</p>";
+
+    let response = "うーん、よくわからないよ！";
+
+    if (input.includes("面会")) {
+        response = "面会時間は10時〜17時だよ♪";
+    }
+    if (input.includes("料金")) {
+        response = "料金については受付に聞いてね！";
+    }
+
+    chat.innerHTML += "<p><b>まんてんちゃん:</b> " + response + "</p>";
+
+    document.getElementById("userInput").value = "";
+}
+</script>
+
+</body>
+</html>
