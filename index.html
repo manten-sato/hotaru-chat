@@ -163,31 +163,12 @@ function reply(){
   }
 
 　// 利用条件
-　else if(
-  　t.includes("利用条件") ||
-  　t.includes("入居条件") ||
-  　t.includes("対象") ||
- 　 t.includes("利用できる人") ||
- 　 t.includes("入れる人")
-　){
+　else if(t.includes("利用条件") || t.includes("入居条件") || t.includes("対象") || t.includes("利用できる人") || t.includes("入れる人")){
 　  response = "当ホームの利用対象は、障害支援区分の認定を受けている方で、共同生活が可能な方となります。詳細は個別にご相談ください。";
 　}
 
    // 利用方法
-else if(
-  t.includes("利用者") ||
-  t.includes("利用方法") ||
-  t.includes("申し込み") ||
-  t.includes("申込") ||
-  t.includes("手続き") ||
-  t.includes("どうやって利用") ||
-  t.includes("利用するには") ||
-  t.includes("どんな人") ||
-  t.includes("どのような人") ||
-  t.includes("対象者") ||
-  t.includes("利用できる人") ||
-  t.includes("入れる人")
-){
+else if(t.includes("利用者") || t.includes("利用方法") || t.includes("申し込み") || t.includes("申込") || t.includes("手続き") || t.includes("どうやって利用") || t.includes("利用するには") || t.includes("どんな人") || t.includes("どのような人") || t.includes("対象者") || t.includes("利用できる人") || t.includes("入れる人")){
   response = "身体障がい・知的障がい・精神障がいのある方で、日常生活においてある程度身の回りのことができ、共同生活が可能な方が対象となります。また、グループホームの利用には、市町村が発行する『障害福祉サービス受給者証』が必要です。まずはお住まいの市町村窓口へご相談いただき、受給者証の申請手続きを行ってください。その後、見学・面談を経て利用開始となります。";
 }
   
@@ -221,19 +202,7 @@ else if(
     response = "防災計画を策定し、昼夜を想定した避難訓練を実施しています。スプリンクラー等の設備も整備されています。";
   }
 　// 施設・設備について
-else if(
-  t.includes("どんな施設") ||
-  t.includes("どのような施設") ||
-  t.includes("設備") ||
-  t.includes("バリアフリー") ||
-  t.includes("車いす") ||
-  t.includes("wifi") ||
-  t.includes("Wi-Fi") ||
-  t.includes("インターネット") ||
-  t.includes("居室") ||
-  t.includes("個室") ||
-  t.includes("共用")
-){
+else if(t.includes("どんな施設") || t.includes("どのような施設") || t.includes("設備") || t.includes("バリアフリー") || t.includes("車いす") || t.includes("wifi") || t.includes("Wi-Fi") || t.includes("インターネット") || t.includes("居室") || t.includes("個室") || t.includes("共用")){
   response = "当ホームはバリアフリー対応で、車いすでの利用も可能です。居室はすべて個室で、各居室に冷暖房を完備しています。Wi-Fi（無線インターネット環境）も整備しています。共用スペースには食堂・浴室・洗濯室があり、各棟に洗濯機2台・乾燥機2台を設置しています。また、各居室および共用スペースにはスプリンクラーを完備し、防災面にも配慮しています。";
 }
   // 該当なし
