@@ -163,12 +163,33 @@ function reply(){
   }
 
 　// 利用条件
-　else if(t.includes("利用条件") || t.includes("入居条件") || t.includes("対象") || t.includes("利用できる人") || t.includes("入れる人") || (t.includes("利用者") || t.includes("利用方法") || t.includes("申し込み") || t.includes("申込") || t.includes("手続き") || t.includes("どうやって利用") || t.includes("利用するには") || t.includes("どんな人") || t.includes("どのような人")){
+　else if(
+  t.includes("利用条件") ||
+  t.includes("入居条件") ||
+  t.includes("対象") ||
+  t.includes("利用できる人") ||
+  t.includes("入れる人") ||
+  t.includes("利用者") ||
+  t.includes("利用方法") ||
+  t.includes("申し込み") ||
+  t.includes("申込") ||
+  t.includes("手続き") ||
+  t.includes("どうやって利用") ||
+  t.includes("利用するには") ||
+  t.includes("どんな人") ||
+  t.includes("どのような人")
+){
   response = "当ホームの利用対象は、身体障がい・知的障がい・精神障がいのある方で、日常生活においてある程度身の回りのことができ、共同生活が可能な方が対象となります。また、グループホームの利用には、市町村が発行する『障害福祉サービス受給者証』が必要です。まずはお住まいの市町村窓口へご相談いただき、受給者証の申請手続きを行ってください。その後、見学・面談を経て利用開始となります。";
 }
   
   // 料金
-  else if(t.includes("料金") ||(t.includes("家賃")|| t.includes("費用") || t.includes("いくら") || t.includes("利用料")){
+  else if(
+  t.includes("料金") ||
+  t.includes("家賃") ||
+  t.includes("費用") ||
+  t.includes("いくら") ||
+  t.includes("利用料")
+){
     response = "月額の目安は、食材料費20,000円、水道光熱費12,000円、家賃25,000円、消耗品費3,000円です。10,000円の家賃助成があり、実質月額は50,000円となります。";
   }
 
